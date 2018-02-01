@@ -2,111 +2,250 @@
   outline: 1px solid red !important;
 }*/
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    will-change: transform;
 }
 
 body {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  background: #f3ecec;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background: #a4281c;
 }
+
 #header h1 {
-  color:#ab0606
+    display: inline-flex;
+    color: #fff;
+    text-shadow: 2px 1px #0e0e0e;
+    background-color: #e22012;
+    padding: 10px;
+    transform: skew(-15deg);
+    border: 4px dashed #F44336;
+    box-shadow: 5px 5px 25px #4a0101;
 }
+
 .container {
-  background: transparent
+    background: transparent
 }
+
 #callToAction {
-  background-color: #fff;
-  padding: 8px 0;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px #5d0303;
 }
-#menu a {
-      background: linear-gradient(#ab0606, #bd0f01);
-      font-size: 18px;
-      border: none;
-      color: #ff8c8c;
-      border-radius: 20px;
-      padding: 5px 15px;
-      text-decoration: none
-}
+
 .pick-pizza {
-  padding: 8px 10px;
-  border-radius: 25px;
-background-color: transparent;
-color: #e22012;
- 
-  text-decoration: none;
-  display: flex;
-  margin: 20px 10px;
-  text-align: center;
-  border: 2px solid #e22012;
-  justify-content: center;
+    padding: 8px 10px;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #e22012;
+    text-decoration: none;
+    display: flex;
+    margin: 20px 10px;
+    text-align: center;
+    border: 2px solid #e22012;
+    justify-content: center;
+    transition: background-color 0.25s linear;
 }
+
 .pick-pizza:hover {
-   color: #fff;
+    color: #fff;
     background-color: #e22012;
 }
-#menu a:hover {
-  color: #eee
-}
+
 #ingredients h2,
 #locations h2,
 #pizzaGenerator h2 {
-          background: #e22012;
-          margin: 0;
-          padding: 10px;
-          z-index: 3;
-          text-align: center;
-          color: #fff;
+    background: #e22012;
+    margin: 0;
+    padding: 10px;
+    z-index: 3;
+    text-align: center;
+    color: #fff;
 }
+
 #ingredients .row:last-of-type,
-#locations .row:last-of-type {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #e0e0dd;
-  box-shadow: 2px 5px 30px #ccc;
+#locations .row:last-of-type,
+.pizza-resizer {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #e0e0dd;
+    box-shadow: 2px 5px 30px #670c03;
 }
+
 #randomPizzas {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 #randomPizzas .randomPizzaContainer {
 
-      padding: 6px;
-      background-color: #fff;
-      background-clip:content-box
+    padding: 6px;
+    background-color: #fff;
+    background-clip: content-box
 }
+
 #randomPizzas .randomPizzaContainer ul {
-  /*padding: 0*/
+    /*padding: 0*/
 }
+
 #randomPizzas .randomPizzaContainer ul li {
-  padding: 5px
+    padding: 5px
 }
+
 form {
-  display: inline-block;
+    display: inline-block;
 }
 
 .centered {
-  text-align: center;
+    text-align: center;
 }
 
 #pizzaSize {
-  font-weight: 800;
+    font-weight: 800;
 }
 
 .mover {
-  position: fixed;
-  width: 256px;
-  z-index: -1;
+    position: fixed;
+    width: 256px;
+    z-index: -1;
 }
 
 .randomPizzaContainer {
-  display: flex;
+    display: flex;
 }
+
 /*
 .randomPizzaContainer:after {
   content: "";
   display: table;
   clear:both;
 }*/
+.no-padding {
+    padding: 0 !important;
+ }
+.navbar {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap
+}
+
+.navbar .nav-item {
+    margin: 4px 10px;
+}
+
+.navbar .nav-item {
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    background-color: #e22012;
+    text-decoration: none;
+    transform: skew(-15deg);
+    transition: background-color 0.25s linear, color 0.25s linear;
+}
+
+.navbar .nav-item:hover {
+    background-color: #fff;
+    color: #e22012;
+}
+
+.navbar .nav-item a {
+    text-decoration: none;
+    color: inherit;
+    transform: skew(15deg);
+    display: flex;
+    padding: 10px 15px;
+}
+
+.pizza-resizer {
+    padding: 15px 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.pizza-resizer p {
+    text-align: center;
+}
+
+/* range input */
+#sizeSlider {
+    width: 50%;
+    margin-top: 12px;
+}
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 3px 0;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 8px;
+}
+input[type=range]::-webkit-slider-thumb {
+    border: 4px solid rgba(90, 0, 0, 0);
+    height: 25px;
+    width: 50px;
+    border-radius: 50px;
+    background: #e22012;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -2.8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 8px;
+}
+input[type=range]::-moz-range-thumb {
+    border: 4px solid rgba(90, 0, 0, 0);
+    height: 25px;
+    width: 50px;
+    border-radius: 50px;
+    background: #e22012;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #ddd;
+    border-radius: 3px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ccc;
+    border: none;
+    border-radius:8px;
+}
+input[type=range]::-ms-thumb {
+    border: 4px solid rgba(90, 0, 0, 0);
+    width: 50px;
+    border-radius: 50px;
+    background: #e22012;
+    cursor: pointer;
+    height: 20px;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #ddd;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ddd;
+}
