@@ -12,22 +12,15 @@
         <div class="row">
           <div class="col-md-12">
             <h1>Cam's Pizzeria</h1>
-            <div class="row">
+            <navbar class="navbar ">
               <div id="menu" class="col-md-12">
-                <form action="#randomPizzas">
-                  <input type="submit" value="Menu">
-                </form>
-                <form action="#ingredients">
-                  <input type="submit" value="Our Ingredients">
-                </form>
-                <form action="#locations">
-                  <input type="submit" value="Locations">
-                </form>
-                <form action="#" onsubmit="alert('Thanks for clicking! This button doesn\'t do anything because this is a fake pizzeria :\)')">
-                  <input type="submit" value="Contact Us">
-                </form>
+               <a href="#randomPizzas">Menu</a>
+              <a href="#ingredients">Our gradients</a>
+              <a href="#locations">Locations</a>
+              <a href="#randomPizzas">Contact Us</a>
+                
               </div>
-            </div>
+            </navbar><br>
           </div>
         </div>
       </div>
@@ -35,7 +28,7 @@
       </div>
     </div>
     <div id="callToAction" class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 img-responsive">
         <img src="images/pizzeria.jpg" class="img-responsive"> <!-- Image credit to: http://commons.wikimedia.org/wiki/File:HK_TST_night_%E5%98%89%E8%98%AD%E9%81%93_Granville_Road_restaurant_Paisano's_Pizzeria_pizza_Dec-2013.JPG -->
       </div>
       <div class="col-md-8">
@@ -49,13 +42,13 @@
         </div>
         <div class="row">
           <div class="col-md-6 col-md-push-3">
-            <form action="#randomPizzas">
-              <input type="submit" value="Pick a Pizza Now!">
-            </form>
+            
+            <a class="pick-pizza" href="#randomPizzas">Pick a Pizza Now!</a>
           </div>
         </div>
       </div>
     </div>
+    <br>
     <div id="ingredients" class="row">
       <div class="col-md-8 col-md-push-2">
         <div class="row">
@@ -74,9 +67,10 @@
         </div>
       </div>
     </div>
+    <br>
     <div id="locations" class="row">
       <div class="col-md-12">
-        <h2 style="text-align: center">Locations!</h2>
+        <h2>Locations!</h2>
         <div class="row">
           <div class="col-md-6">
             <h3>Pizza Road</h3>
@@ -88,10 +82,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div><br>
     <div id="pizzaGenerator" class="row">
       <div class="col-md-12">
-        <h2 style="text-align: center">Our Pizzas!</h2>
+        <h2>Our Pizzas!</h2>
         <div class="row">
           <div class="col-md-12">
             <em>What size pizza would you like? Use the slider below to change pizza sizes.</em>
@@ -102,6 +96,7 @@
           </div>
         </div>
         <div id="randomPizzas" class="row">
+          <!--TODO: remove these inline styles -->
           <div id="pizza0" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
             <div style="width:35%">
               <img src="images/pizza.png" class="img-responsive">
@@ -119,6 +114,7 @@
               </ul>
             </div>
           </div>
+          <!--TODO: revoe these new styles-->
           <div id="pizza1" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
             <div style="width:35%">
               <img src="images/pizza.png" class="img-responsive">

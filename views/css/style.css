@@ -4,19 +4,85 @@
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  background: black;
+  background: #f3ecec;
 }
-
-input {
-  background: grey;
-  font-size: 18px;
+#header h1 {
+  color:#ab0606
 }
+.container {
+  background: transparent
+}
+#callToAction {
+  background-color: #fff;
+  padding: 8px 0;
+}
+#menu a {
+      background: linear-gradient(#ab0606, #bd0f01);
+      font-size: 18px;
+      border: none;
+      color: #ff8c8c;
+      border-radius: 20px;
+      padding: 5px 15px;
+      text-decoration: none
+}
+.pick-pizza {
+  padding: 8px 10px;
+  border-radius: 25px;
+background-color: transparent;
+color: #e22012;
+ 
+  text-decoration: none;
+  display: flex;
+  margin: 20px 10px;
+  text-align: center;
+  border: 2px solid #e22012;
+  justify-content: center;
+}
+.pick-pizza:hover {
+   color: #fff;
+    background-color: #e22012;
+}
+#menu a:hover {
+  color: #eee
+}
+#ingredients h2,
+#locations h2,
+#pizzaGenerator h2 {
+          background: #e22012;
+          margin: 0;
+          padding: 10px;
+          z-index: 3;
+          text-align: center;
+          color: #fff;
+}
+#ingredients .row:last-of-type,
+#locations .row:last-of-type {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #e0e0dd;
+  box-shadow: 2px 5px 30px #ccc;
+}
+#randomPizzas {
+  display: flex;
+  flex-wrap: wrap;
+}
+#randomPizzas .randomPizzaContainer {
 
+      padding: 6px;
+      background-color: #fff;
+      background-clip:content-box
+}
+#randomPizzas .randomPizzaContainer ul {
+  /*padding: 0*/
+}
+#randomPizzas .randomPizzaContainer ul li {
+  padding: 5px
+}
 form {
   display: inline-block;
 }
@@ -36,16 +102,11 @@ form {
 }
 
 .randomPizzaContainer {
-  float: left;
   display: flex;
 }
-
+/*
 .randomPizzaContainer:after {
   content: "";
   display: table;
   clear:both;
-}
-
- .container {
-  background-color: rgba(240, 60, 60, 0.8);
-}
+}*/
