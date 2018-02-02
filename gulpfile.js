@@ -1,19 +1,18 @@
+// @ts-check
 const gulp = require('gulp'),
-      imageop = require('gulp-image-optimization'),
       minifyHtml = require('gulp-minify-html'),
-      minifyCss = require("gulp-minify-css");
-      uglify = require('gulp-uglify');
-      concat = require('gulp-concat');
+      minifyCss = require("gulp-minify-css"),
+      uglify = require('gulp-uglify'),
+      concat = require('gulp-concat'),
+      image = require('gulp-image');
 
-
-gulp.task('images', function(cb) {
-    gulp.src(['./views/src/images/*.png','./views/src/images/*.jpg','./views/src/images/*.gif','./views/src/images/*.jpeg'])
-        .pipe(imageop({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true
-    })).pipe(gulp.dest('./views/dist/images/')).on('end', cb).on('error', cb);
+gulp.task('image', function () {
+    gulp.src('./views/src/images/*')
+        .pipe(image())
+        .pipe(gulp.dest('./views/dist/images/'));
 });
+
+gulp.task('default', ['image']);
 
 // including plugins
 
@@ -39,7 +38,12 @@ gulp.task('minify-js', function () {
         .pipe(gulp.dest('./views/dist/js/'))
 });
 
+gulp.task('concat-css', function() {
+    gulp.src('./views/dist/css/*.css')
+        .pipe(concat('main.css'))
+        .pipe(gulp.dest('./views/dist/css/'))
+});
 
 gulp.task('minify-all', ()=>{
-    gulp.run(['minify-html', 'minify-css', 'minify-js'])
+    gulp.run(['image','minify-html', 'minify-css', 'concat-css'])
 });
