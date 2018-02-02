@@ -6,9 +6,18 @@
   "dependencies": {
     "reload": "^2.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-concatenate": "^0.1.4",
+    "gulp-image-optimization": "^0.1.3",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-uglify": "^3.0.0"
+  },
   "scripts": {
-    "start": "reload -b -d views -s pizza.html"
+    "start": "reload -b -d views/dist -s pizza.html",
+    "minify:all": "gulp minify-all"
   },
   "repository": {
     "type": "git",
