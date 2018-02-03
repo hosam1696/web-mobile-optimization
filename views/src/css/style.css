@@ -11,6 +11,7 @@
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     background: #a4281c;
+    margin: 0;
 }
 
 #header h1 {
@@ -27,7 +28,18 @@ body {
 .container {
     background: transparent
 }
-
+.randomPizzaContainer div ul {
+    padding: 0;
+    list-style: none;
+}
+.randomPizzaContainer div h4 {
+    margin-bottom: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+label {
+    display: none;
+}
 #callToAction {
     background-color: #fff;
     box-shadow: 5px 5px 5px #5d0303;
@@ -52,15 +64,16 @@ body {
     background-color: #e22012;
 }
 
+
 #ingredients h2,
 #locations h2,
 #pizzaGenerator h2 {
-    background: #e22012;
+    color: #fff;
     margin: 0;
     padding: 10px;
     z-index: 3;
     text-align: center;
-    color: #fff;
+    background: linear-gradient(-45deg,#e22012,#f18078);
 }
 
 #ingredients .row:last-of-type,
@@ -92,6 +105,13 @@ body {
     padding: 5px
 }
 
+#randomPizzas .randomPizzaContainer div:first-child img{
+    height: 120px;
+    width: 92px;
+}
+#randomPizzas .randomPizzaContainer .row {
+    width: 100%
+}
 form {
     display: inline-block;
 }
@@ -123,6 +143,14 @@ form {
 .no-padding {
     padding: 0 !important;
  }
+
+.content-center-img {
+    height: 150px;
+    max-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .navbar {
     margin: 0;
     padding: 0;
@@ -248,4 +276,19 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
     background: #ddd;
+}
+
+footer {
+    padding: 20px;
+    background-color: #fff;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+
+}
+footer p {
+    margin-bottom: 0;
+}
+footer p a {
+    text-decoration: none;
 }

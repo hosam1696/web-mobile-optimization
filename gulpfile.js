@@ -45,5 +45,5 @@ gulp.task('concat-css', function() {
 });
 
 gulp.task('minify-all', ()=>{
-    gulp.run(['image','minify-html', 'minify-css', 'concat-css'])
+    gulp.run(['image','minify-html', 'minify-css'])
 });
