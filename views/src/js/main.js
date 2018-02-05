@@ -24,6 +24,12 @@ cameron *at* udacity *dot* com
 
 const randomPizzasDiv = document.getElementById("randomPizzas");
 let pizzaIngredients = {};
+let items = document.querySelectorAll('.mover');
+let scrollTop = 0;
+let documentTop = document.documentElement.scrollTop || document.body.scrollTop;
+let phase = 0;
+let cols = 8;
+let s = 250;
 
 pizzaIngredients.meats = [
     "Pepperoni",
@@ -465,14 +471,22 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
-    const items = document.querySelectorAll('.mover');
-    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    for (let i = 0; i < items.length; i++) {
-        // document.body.scrollTop is no longer supported in Chrome.
+    
+    documentTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //if (documentTop > scrollTop + 10) {
+        [...items].forEach((item, i) => {
+            phase = Math.ceil(Math.random() * -20) + 40;
+            item.style.transform = 'translateX('+ 5*phase*(i%cols) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
+        })
+      //  scrollTop = documentTop;
+    //}
+    /*
+        for (let i = 0; i < items.length; i++) {
+            //phase = Math.sin((scrollTop / 1600) + (i % 5));
+            //console.log(items[i].getBoundingClientRect());
+        }*/
 
-        let phase = Math.sin((scrollTop / 1250) + (i % 5));
-        items[i].style.transform = 'translateX(' + items[i].offsetLeft + 100 * phase + 'px)'
-    }
+    
 
     // User Timing API to the rescue again. Seriously, it's worth learning.
     // Super easy to create custom metrics.
@@ -506,8 +520,7 @@ function pizzaElementGenerator(i, pizzasDiv) {
     return pizzasDiv;
 }
 
-// runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function () {
@@ -520,20 +533,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let resizableImgs = [];
 
-    let cols = 8;
-    let s = 256;
+
 
     // loop for creating background pizzas
     for (let i = 0; i < 200; i++) {
         let elem = document.createElement('img');
         [elem.className, elem.src, elem.alt] = ['mover', "images/pizza.png", 'pizza' + i];
-        Object.assign(elem.style, {
-            height: "100px",
-            width: '73px',
-            transform: 'translate(' + (i % cols) * s + 'px,' + (Math.floor(i / cols) * s) + 'px)'
-        });
+        elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)'
+
         movingPizzas.appendChild(elem);
     }
+    items = document.querySelectorAll('.mover');
 
     // This for-loop actually creates and appends all of the pizzas when the page loads
     for (let i = 2; i < 100; i++) {
@@ -541,12 +551,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     resizableImgs = document.querySelectorAll('.img-resizable');
+
     // move the function from executing in html
     sizeSlider.addEventListener('change', (event) => {
         resizePizzas(event.target.value, resizableImgs);
     });
 
-
+    // runs updatePositions on scroll
+    window.addEventListener('scroll',updatePositions);
 });
 
 /*

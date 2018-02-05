@@ -97,9 +97,6 @@ label {
     background-clip: content-box
 }
 
-#randomPizzas .randomPizzaContainer ul {
-    /*padding: 0*/
-}
 
 #randomPizzas .randomPizzaContainer ul li {
     padding: 5px
@@ -115,7 +112,10 @@ label {
 form {
     display: inline-block;
 }
-
+#menu {
+    position: relative;
+    z-index: 55;
+}
 .centered {
     text-align: center;
 }
@@ -125,9 +125,12 @@ form {
 }
 
 .mover {
-    position: fixed;
-    width: 256px;
+    position: absolute;
+    display: flex;
+    height: 100px;
+    width: 73px;
     z-index: -1;
+    will-change: transform;
 }
 
 .randomPizzaContainer {
