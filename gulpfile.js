@@ -1,10 +1,11 @@
 // @ts-check
 const gulp = require('gulp'),
-      minifyHtml = require('gulp-minify-html'),
-      minifyCss = require("gulp-minify-css"),
-      uglify = require('gulp-uglify'),
-      concat = require('gulp-concat'),
-      image = require('gulp-image');
+    minifyHtml = require('gulp-minify-html'),
+    minifyCss = require("gulp-minify-css"),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
+    image = require('gulp-image'),
+    pump = require('pump');
 
 gulp.task('image', function () {
     gulp.src('./views/src/images/*')
@@ -33,9 +34,9 @@ gulp.task('minify-css', function () {
 });
 
 gulp.task('minify-js', function () {
-    gulp.src('./views/src/js/*.js') // path to your files
-        .pipe(uglify())
-        .pipe(gulp.dest('./views/dist/js/'))
+    pump([gulp.src('./views/src/js/*.js') // path to your files
+        ,uglify()
+        ,gulp.dest('./views/dist/js/')])
 });
 
 gulp.task('concat-css', function() {

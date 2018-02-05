@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll',updatePositions);
 });
 
-/*
+
 
 //TODO uncomment the service worker
 if ('serviceWorker' in navigator) {
@@ -575,4 +575,3 @@ if ('serviceWorker' in navigator) {
       })
 }
 
-*/
