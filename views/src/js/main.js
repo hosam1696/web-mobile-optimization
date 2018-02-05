@@ -383,7 +383,7 @@ function resizePizzas(size, resizableImgs) {
 
         [...resizableImgs].forEach(img => {
             img.style.transform = size === '1' ? 'scale(0.6)' : size === '2' ? 'scale(1)' : 'scale(1.6)';
-        })
+        });
 
     }
 
@@ -404,7 +404,7 @@ function resizePizzas(size, resizableImgs) {
             default:
                 console.log("bug in changeSliderLabel");
         }
-    })(size)
+    })(size);
 
     // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
     // function determineDx (elem, size) {
@@ -474,10 +474,10 @@ function updatePositions() {
     
     documentTop = document.documentElement.scrollTop || document.body.scrollTop;
     //if (documentTop > scrollTop + 10) {
-        [...items].forEach((item, i) => {
-            phase = Math.ceil(Math.random() * -20) + 40;
-            item.style.transform = 'translateX('+ 5*phase*(i%cols) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
-        })
+    [...items].forEach((item, i) => {
+        phase = Math.ceil(Math.random() * -20) + 40;
+        item.style.transform = 'translateX(' + 5 * phase * (i % cols) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
+    });
       //  scrollTop = documentTop;
     //}
     /*
@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < 200; i++) {
         let elem = document.createElement('img');
         [elem.className, elem.src, elem.alt] = ['mover', "images/pizza.png", 'pizza' + i];
-        elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)'
+        elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
 
         movingPizzas.appendChild(elem);
     }
@@ -565,13 +565,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //TODO uncomment the service worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-      .register('service-worker.js')
-      .then(reg=>{
-        console.log('Service worker registered successfully!')
-      })
-      .catch(err=>{
-        console.warn('Error in registeration ', err)
-      })
+    navigator.serviceWorker
+        .register('service-worker.js')
+        .then(reg => {
+            console.log('Service worker registered successfully!');
+        })
+        .catch(err => {
+            console.warn('Error in registeration ', err);
+        });
 }
 
