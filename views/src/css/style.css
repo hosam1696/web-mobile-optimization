@@ -23,7 +23,11 @@ input {
 form {
     display: inline-block;
 }
-
+.img-head {
+    max-width: 100%;
+    height: auto;
+    display:block
+}
 .centered {
     text-align: center;
 }

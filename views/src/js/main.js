@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //TODO uncomment the service worker
-/*
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('service-worker.js')
@@ -535,4 +535,3 @@ if ('serviceWorker' in navigator) {
             console.warn('Error in registeration ', err);
         });
 }
-*/
