@@ -379,7 +379,7 @@ function resizePizzas(size, resizableImgs) {
     function changePizzaSizes(size) {
 
         [...resizableImgs].forEach(img => {
-            img.style.transform = size === '1' ? 'scale(0.6)' : size === '2' ? 'scale(1)' : 'scale(1.6)';
+            img.style.transform = size === '1' ? 'scale(0.6)' : size === '2' ? 'scale(0.9)' : 'scale(1.3)';
         });
 
     }
@@ -391,13 +391,13 @@ function resizePizzas(size, resizableImgs) {
         switch (size) {
             case "1":
                 pizzaSize.innerHTML = "Small";
-                return;
+                break;
             case "2":
                 pizzaSize.innerHTML = "Medium";
-                return;
+                break;
             case "3":
                 pizzaSize.innerHTML = "Large";
-                return;
+                break;
             default:
                 console.log("bug in changeSliderLabel");
         }
@@ -464,23 +464,19 @@ function updatePositions() {
 
 
 function pizzaElementGenerator(i, pizzasDiv) {
-    let id = i + 1;
+    
     pizzasDiv.innerHTML += `\
-    <div id="pizza0" class="randomPizzaContainer col-md-4 col-lg-3 col-sm-6 col-xs-12">
-        <div class="row">
-          <div id="pizza${id}" class="content-center-img col-lg-12 col-md-12 col-sm-12 col-xs-12 col-pull-lg-2 col-pull-md-2 col-pull-sm-2 col--pull-xs-2">
-              <img src="./images/pizza.png" class="img-resizable" alt="one image">
-          </div>
-         <div class="col-lg-push-1 col-md-10 col-lg-push-1 col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-10 col-xs-push-1">
-
-          <h4>${randomName()}</h4>
-          <ul>
-          ${makeRandomPizza()}
-          </ul>
-          </div>
-        </div>
-    </div>
-    `;
+    <div id="pizza${i+2}" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
+                        <div style="width:35%">
+                            <img src="images/pizza.png" class="img-responsive">
+                        </div>
+                        <div style="width:65%">
+                            <h4>${randomName()}</h4>
+                            <ul>
+                               ${makeRandomPizza()}
+                            </ul>
+                        </div>
+                    </div>`;
     return pizzasDiv;
 }
 
@@ -502,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // loop for creating background pizzas
     for (let i = 0; i < 200; i++) {
         let elem = document.createElement('img');
-        [elem.className, elem.src, elem.alt] = ['mover', "images/pizza.png", 'pizza' + i];
+        [elem.className, elem.src, elem.alt] = ['mover', "images/icons/icon-72x72.png", 'pizza' + i];
         elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
 
         movingPizzas.appendChild(elem);
@@ -514,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pizzaElementGenerator(i, pizzasDiv);
     }
 
-    resizableImgs = document.querySelectorAll('.img-resizable');
+    resizableImgs = document.querySelectorAll('.img-responsive');
 
     // move the function from executing in html
     sizeSlider.addEventListener('change', (event) => {
@@ -528,6 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //TODO uncomment the service worker
+/*
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('service-worker.js')
@@ -538,3 +535,4 @@ if ('serviceWorker' in navigator) {
             console.warn('Error in registeration ', err);
         });
 }
+*/
