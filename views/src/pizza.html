@@ -1,17 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pizza Optimizer</title>
     <meta name="description" content="page aims to do best practices in following the procedures to optimize page performance">
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#e22012">
-<!--TODO: comment these styles with the concatenated output-->
+    <!--TODO: comment these styles with the concatenated output-->
     <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">-->
     <!--<link rel="stylesheet" href="css/main.css">-->
 </head>
 <body>
@@ -45,7 +43,8 @@
         </div>
         <div id="callToAction" class="row">
             <div class="col-md-4">
-                <img src="images/pizzeria.jpg" class="img-responsive">
+                <img src="./images/pizzeria-md.jpg" srcset="./images/pizzeria-sm.jpg 480w, ./images/pizzeria-md.jpg 800w, ./images/pizzeria-lg.jpg
+                1200w">
                 <!-- Image credit to: http://commons.wikimedia.org/wiki/File:HK_TST_night_%E5%98%89%E8%98%AD%E9%81%93_Granville_Road_restaurant_Paisano's_Pizzeria_pizza_Dec-2013.JPG -->
             </div>
             <div class="col-md-8">
@@ -120,9 +119,12 @@
                     </div>
                     <div id="pizzaSize" class="col-md-6">Medium</div>
                     <div class="col-md-12">
-                        <input id="sizeSlider" type="range" min="1" max="3" value="2" step="1" onchange="resizePizzas(this.value)"></input>
+                        <input id="sizeSlider" type="range" min="1" max="3" value="3" step="1"></input>
                     </div>
+                    
                 </div>
+                <br>
+                <br>
                 <div id="randomPizzas" class="row">
                     <div id="pizza0" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
                         <div style="width:35%">

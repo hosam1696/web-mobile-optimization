@@ -32,4 +32,4 @@ the production folder that contains the minified code version located on `views/
 
 
 
-[view the page](https://hosamsam.github.io/mobile-portfolio-nanodegree/views/dist/pizza.html)
+[view the page](https://hosamsam.github.io/web-mobile-optimization/views/dist/pizza.html)

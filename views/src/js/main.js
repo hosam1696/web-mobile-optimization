@@ -379,7 +379,7 @@ function resizePizzas(size, resizableImgs) {
     function changePizzaSizes(size) {
 
         [...resizableImgs].forEach(img => {
-            img.style.transform = size === '1' ? 'scale(0.6)' : size === '2' ? 'scale(0.9)' : 'scale(1.3)';
+            img.style.transform = size === '1' ? 'scale(0.4)' : size === '2' ? 'scale(0.7)' : 'scale(1.1)';
         });
 
     }
