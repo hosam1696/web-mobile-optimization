@@ -45,6 +45,14 @@ form {
 .randomPizzaContainer {
     float: left;
     display: flex;
+    width:33.33%;
+    height: 325px;
+}
+.randomPizzaContainer > div:first-child {
+    width: 35%;
+}
+.randomPizzaContainer>div:last-child {
+    width: 65%;
 }
 h2 {text-align: center}
 label.reader-label{
