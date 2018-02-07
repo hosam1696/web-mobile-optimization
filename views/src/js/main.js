@@ -468,7 +468,7 @@ function pizzaElementGenerator(i, pizzasDiv) {
     pizzasDiv.innerHTML += `\
     <div id="pizza${i+2}" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
                         <div style="width:35%">
-                            <img src="images/pizza.png" class="img-responsive">
+                            <img src="images/pizza.png" class="img-responsive" alt="img-${i}">
                         </div>
                         <div style="width:65%">
                             <h4>${randomName()}</h4>

@@ -4,7 +4,8 @@ const files = [
     './css/main.css',
     './js/main.js',
     './images/pizza.png',
-    './images/pizzeria.jpg'
+    './images/pizzeria-md.jpg',
+    './images/pizzeria-md.jpg'
 ];
 self.addEventListener('install', async () => {
     //console.log('> service worker Installed..'); event.waitUntil

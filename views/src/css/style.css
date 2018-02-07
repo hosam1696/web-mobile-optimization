@@ -46,7 +46,10 @@ form {
     float: left;
     display: flex;
 }
-
+h2 {text-align: center}
+label.reader-label{
+    opacity: 0
+}
 .randomPizzaContainer:after {
     content: "";
     display: table;
