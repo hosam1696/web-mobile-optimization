@@ -447,8 +447,9 @@ function updatePositions() {
     documentTop = document.documentElement.scrollTop || document.body.scrollTop;
     //if (documentTop > scrollTop + 10) {
     [...items].forEach((item, i) => {
-        phase = Math.ceil(Math.random() * -20) + 40;
-        item.style.transform = 'translateX(' + 5 * phase * (i % cols) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
+        //var phase = Math.sin((scrollTop / 1250) + (i % 5));
+        phase = Math.sin((documentTop / 2000) + (i % 5));
+        item.style.transform = 'translateX(' + (item.getBoundingClientRect().left + 100 * phase) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
     });
 
 
