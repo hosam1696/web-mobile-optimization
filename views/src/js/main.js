@@ -444,12 +444,13 @@ function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
 
-    documentTop = document.documentElement.scrollTop || document.body.scrollTop;
+    documentTop = (document.documentElement.scrollTop || document.body.scrollTop)/800;
     //if (documentTop > scrollTop + 10) {
     [...items].forEach((item, i) => {
-        //var phase = Math.sin((scrollTop / 1250) + (i % 5));
-        phase = Math.sin((documentTop / 2000) + (i % 5));
-        item.style.transform = 'translateX(' + (item.getBoundingClientRect().left + 100 * phase) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
+        // male phase global variable to reduce the numbers of times defining the same variable
+        phase = Math.sin(documentTop + (i % 5));
+        item.style.left = item.basicLeft + 100 * phase +"px";
+        //item.style.left = 'translateX(' + (item.getBoundingClientRect().left + 100 * phase) + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
     });
 
 
@@ -464,20 +465,20 @@ function updatePositions() {
 }
 
 
+// use make of ES template string to easily generate the wanted HTML Markup
 function pizzaElementGenerator(i, pizzasDiv) {
-    
     pizzasDiv.innerHTML += `\
-    <div id="pizza${i+2}" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
-                        <div style="width:35%">
-                            <img src="images/pizza.png" class="img-responsive" alt="img-${i}">
-                        </div>
-                        <div style="width:65%">
-                            <h4>${randomName()}</h4>
-                            <ul>
-                               ${makeRandomPizza()}
-                            </ul>
-                        </div>
-                    </div>`;
+        <div id="pizza${i+2}" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
+            <div style="width:35%">
+                <img src="images/pizza.png" class="img-responsive" alt="img-${i}">
+            </div>
+            <div style="width:65%">
+                <h4>${randomName()}</h4>
+                <ul>
+                   ${makeRandomPizza()}
+                </ul>
+            </div>
+        </div>`;
     return pizzasDiv;
 }
 
@@ -486,40 +487,41 @@ function pizzaElementGenerator(i, pizzasDiv) {
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function () {
 
-    // App Selectors
-    const movingPizzas = document.getElementById("movingPizzas1");
-    const pizzaSize = document.getElementById("pizzaSize");
-    const pizzasDiv = document.getElementById("randomPizzas");
-    const sizeSlider = document.getElementById('sizeSlider');
+// App Selectors
+const movingPizzas = document.getElementById("movingPizzas1");
+const pizzaSize = document.getElementById("pizzaSize");
+const pizzasDiv = document.getElementById("randomPizzas");
+const sizeSlider = document.getElementById('sizeSlider');
 
-    let resizableImgs = [];
+let resizableImgs = [];
 
 
 
-    // loop for creating background pizzas
-    for (let i = 0; i < 200; i++) {
-        let elem = document.createElement('img');
-        [elem.className, elem.src, elem.alt] = ['mover', "images/icons/icon-72x72.png", 'pizza' + i];
-        elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
+// loop for creating background pizzas
+for (let i = 0; i < 200; i++) {
+    let elem = document.createElement('img');
+    [elem.className, elem.src, elem.alt] = ['mover', "images/icons/icon-72x72.png", 'pizza' + i];
+    elem.basicLeft = (i % cols) * s;
+    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    //elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
+    movingPizzas.appendChild(elem);
+}
+items = document.getElementsByClassName('mover');
 
-        movingPizzas.appendChild(elem);
-    }
-    items = document.querySelectorAll('.mover');
+// This for-loop actually creates and appends all of the pizzas when the page loads
+for (let i = 2; i < 100; i++) {
+    pizzaElementGenerator(i, pizzasDiv);
+}
 
-    // This for-loop actually creates and appends all of the pizzas when the page loads
-    for (let i = 2; i < 100; i++) {
-        pizzaElementGenerator(i, pizzasDiv);
-    }
+resizableImgs = document.getElementsByClassName('img-responsive');
 
-    resizableImgs = document.querySelectorAll('.img-responsive');
+// move the function from executing in html
+sizeSlider.addEventListener('change', (event) => {
+    resizePizzas(event.target.value, resizableImgs);
+});
 
-    // move the function from executing in html
-    sizeSlider.addEventListener('change', (event) => {
-        resizePizzas(event.target.value, resizableImgs);
-    });
-
-    // runs updatePositions on scroll
-    window.addEventListener('scroll', updatePositions);
+// runs updatePositions on scroll
+window.addEventListener('scroll', updatePositions);
 });
 
 
