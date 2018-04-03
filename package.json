@@ -17,7 +17,7 @@
   "scripts": {
     "start": "npm run live:server",
     "minify:all": "gulp minify-all",
-    "live:server": "reload -b -d views/src -s pizza.html"
+    "live:server": "reload -b -d src -s pizza.html"
   },
   "repository": {
     "type": "git",

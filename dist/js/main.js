@@ -6,8 +6,7 @@ let items = document.querySelectorAll('.mover');
 let scrollTop = 0;
 let documentTop = document.documentElement.scrollTop || document.body.scrollTop;
 let phase = 0;
-let cols = 8;
-let s = 250;
+
 
 pizzaIngredients.meats = [
     "Pepperoni",
@@ -496,13 +495,17 @@ const sizeSlider = document.getElementById('sizeSlider');
 let resizableImgs = [];
 
 
-
+let cols = 8;
+let s = 256;
 // loop for creating background pizzas
 for (let i = 0; i < 200; i++) {
     let elem = document.createElement('img');
     [elem.className, elem.src, elem.alt] = ['mover', "images/icons/icon-72x72.png", 'pizza' + i];
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    phase = Math.sin(elem.style.top + (i % 5));
+    elem.style.left = elem.basicLeft + 100 * phase + "px";
+    
     //elem.style.transform = 'translateX(' + (i % cols) * s + 'px) translateY(' + (Math.floor(i / cols) * s) + 'px)';
     movingPizzas.appendChild(elem);
 }
